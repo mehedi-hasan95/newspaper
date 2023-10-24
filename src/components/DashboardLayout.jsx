@@ -1,25 +1,51 @@
-import { headers } from "next/headers";
+"use client";
+import UserDashboard from "@/components/UserDashboard";
+import { Home, PanelLeftClose, PanelRightClose, User } from "lucide-react";
 import Link from "next/link";
-import UserDashboard from "./UserDashboard";
+import { useState } from "react";
 
-const DashboardLayout = () => {
-    const headersList = headers();
-    const firstName = headersList.get("firstName");
+const DashboardLayout = (props) => {
+    const [isOpen, setIsOpen] = useState(true);
+    const open = () => {
+        setIsOpen(!isOpen);
+    };
     return (
-        <div>
-            <div className="px-5 flex justify-between items-center">
-                <Link href="/">Home</Link>
-                <div className="">
-                    {firstName === "0" ? (
+        <div className="bg-gradient-to-r from-slate-200 from-10% via-slate-50  to-transparent">
+            <div className="flex container mx-auto">
+                <div
+                    className={`${
+                        isOpen ? "w-1/4 h-screen bg-slate-300" : "hidden"
+                    } pt-5 `}
+                >
+                    <div>
                         <Link
-                            href="/user/login"
-                            className="hidden cursor-pointer px-6 py-2 font-semibold rounded lg:block dark:bg-violet-400 dark:text-gray-900"
+                            href="/"
+                            className="flex gap-4 font-bold py-3 px-3 hover:bg-slate-400"
                         >
-                            Log in
+                            <Home size={24} /> Home
                         </Link>
-                    ) : (
-                        <UserDashboard />
-                    )}
+                        <Link
+                            href="/"
+                            className="flex gap-4 font-bold py-3 px-3 bg-slate-400"
+                        >
+                            <User size={24} /> Profile
+                        </Link>
+                    </div>
+                </div>
+                <div className={`${isOpen ? "w-3/4" : "w-full"} px-3`}>
+                    <div className="flex justify-between pt-3">
+                        <button onClick={open}>
+                            {isOpen ? (
+                                <PanelLeftClose size={32} />
+                            ) : (
+                                <PanelRightClose size={32} />
+                            )}
+                        </button>
+                        <div className="justify-end">
+                            <UserDashboard />
+                        </div>
+                    </div>
+                    {props.children}
                 </div>
             </div>
         </div>

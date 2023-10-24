@@ -39,12 +39,13 @@ const UserDashboard = () => {
             {isOpen && (
                 <div
                     ref={ref}
-                    className="absolute rounded-xl shadow-md px-5 py-5 md:w-3/4 bg-white overflow-hidden right-0 text-sm"
+                    className="absolute rounded-xl shadow-md px-5 py-5 md:w-52 bg-white overflow-hidden right-0 text-sm"
                 >
                     <div className="flex gap-y-2 flex-col">
                         <Link
-                            href="#"
+                            href="/dashboard/profile"
                             className="font-semibold flex gap-3 pt-3"
+                            onClick={() => setIsOpen(false)}
                         >
                             <User2 size={24} />
                             Profile

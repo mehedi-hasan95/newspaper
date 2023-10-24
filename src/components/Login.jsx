@@ -1,8 +1,10 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const Login = () => {
+    const router = useRouter();
     const [loginFail, setLoginFail] = useState("");
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -21,7 +23,8 @@ const Login = () => {
 
             const result = await response.json();
             if (result.status === "success") {
-                console.log(result);
+                router.replace("/");
+                router.refresh();
             } else {
                 setLoginFail("Email or Password is not match");
             }

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { JWTVerify } from "./JWTHelper";
+import { headers } from "next/headers";
 
 export async function CheckCookieAuth(req) {
     try {

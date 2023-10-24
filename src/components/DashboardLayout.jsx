@@ -9,7 +9,7 @@ import {
 import Link from "next/link";
 import { useState } from "react";
 
-const DashboardLayout = (props) => {
+const DashboardLayout = ({ children }) => {
     const [isOpen, setIsOpen] = useState(true);
     const open = () => {
         setIsOpen(!isOpen);
@@ -38,7 +38,7 @@ const DashboardLayout = (props) => {
                     </div>
                 </div>
                 <div className={`${isOpen ? "w-3/4" : "w-full"} px-3`}>
-                    <div className="flex justify-between pt-3">
+                    <div className="flex justify-between pt-3 relative">
                         <button onClick={open}>
                             {isOpen ? (
                                 <PanelLeftClose size={32} />
@@ -50,7 +50,7 @@ const DashboardLayout = (props) => {
                             <UserDashboard />
                         </div>
                     </div>
-                    {props.children}
+                    {children}
                 </div>
             </div>
         </div>

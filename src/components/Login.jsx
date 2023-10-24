@@ -6,6 +6,7 @@ import { useState } from "react";
 const Login = () => {
     const router = useRouter();
     const [loginFail, setLoginFail] = useState("");
+    const [loading, setLoading] = useState(false);
     const handleLogin = async (e) => {
         e.preventDefault();
         setLoginFail("");
@@ -13,6 +14,7 @@ const Login = () => {
         const password = e.target.password.value;
         const data = { email, password };
         try {
+            setLoading(true);
             const response = await fetch("/api/user/login", {
                 method: "POST", // or 'PUT'
                 headers: {
@@ -30,6 +32,8 @@ const Login = () => {
             }
         } catch (error) {
             console.error("Error:", error);
+        } finally {
+            setLoading(false);
         }
     };
     return (
@@ -52,11 +56,22 @@ const Login = () => {
                         required
                     />
                     {loginFail && <p className="text-rose-700">{loginFail}</p>}
-                    <input
-                        type="submit"
-                        value="Login"
-                        className="px-4 py-2 rounded-lg bg-gray-700 text-white cursor-pointer max-w-max"
-                    />
+                    {loading ? (
+                        <button
+                            type="button"
+                            class="bg-gray-700 cursor-not-allowed flex justify-center items-center gap-4 max-w-max px-4 py-3 text-white font-bold"
+                            disabled
+                        >
+                            Processing...
+                            <div className="w-5 h-5 border-4 border-dashed rounded-full animate-spin"></div>
+                        </button>
+                    ) : (
+                        <input
+                            type="submit"
+                            value="Login"
+                            className="px-5 font-bold py-3 rounded-lg bg-gray-700 text-white cursor-pointer max-w-max"
+                        />
+                    )}
                 </div>
             </form>
         </div>

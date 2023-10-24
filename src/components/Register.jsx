@@ -7,6 +7,7 @@ const Register = () => {
     const router = useRouter();
     const [isError, setIsError] = useState("");
     const [passMatch, setPassMatch] = useState("");
+    const [loading, setLoading] = useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsError("");
@@ -26,6 +27,7 @@ const Register = () => {
             return;
         } else {
             try {
+                setLoading(true);
                 const response = await fetch("/api/user/register", {
                     method: "POST", // or 'PUT'
                     headers: {
@@ -40,6 +42,8 @@ const Register = () => {
                 }
             } catch (error) {
                 console.error("Error:", error);
+            } finally {
+                setLoading(false);
             }
         }
     };
@@ -129,11 +133,22 @@ const Register = () => {
                     </div>
                 </div>
 
-                <input
-                    type="submit"
-                    value="Submit"
-                    className="px-4 py-2 rounded-lg text-white bg-gray-800 mt-5 cursor-pointer"
-                />
+                {loading ? (
+                    <button
+                        type="button"
+                        class="bg-gray-700 cursor-not-allowed flex justify-center items-center gap-4 max-w-max px-4 py-3 text-white font-bold"
+                        disabled
+                    >
+                        Processing...
+                        <div className="w-5 h-5 border-4 border-dashed rounded-full animate-spin"></div>
+                    </button>
+                ) : (
+                    <input
+                        type="submit"
+                        value="Register"
+                        className="px-5 font-bold py-3 rounded-lg bg-gray-700 text-white cursor-pointer max-w-max"
+                    />
+                )}
             </form>
         </div>
     );

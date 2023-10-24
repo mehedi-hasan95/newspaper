@@ -26,7 +26,7 @@ const UserDashboard = () => {
         }
     };
     return (
-        <div className="pl-3 max-w-[100px]">
+        <div className="pl-3">
             <button onClick={() => setIsOpen(!isOpen)}>
                 <Image
                     src="/avater.png"
@@ -37,7 +37,10 @@ const UserDashboard = () => {
                 />
             </button>
             {isOpen && (
-                <div ref={ref} className="your-component">
+                <div
+                    ref={ref}
+                    className="absolute rounded-xl shadow-md px-5 py-5 md:w-3/4 bg-white overflow-hidden right-0 text-sm"
+                >
                     <div className="flex gap-y-2 flex-col">
                         <Link
                             href="#"
@@ -48,7 +51,7 @@ const UserDashboard = () => {
                         </Link>
                         <div onClick={logOut}>
                             <h2 className="cursor-pointer font-semibold flex gap-3">
-                                {/* <LogOut size={24} /> */}
+                                <LogOut size={24} />
                                 Log Out
                             </h2>
                         </div>

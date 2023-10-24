@@ -1,6 +1,11 @@
 "use client";
 import UserDashboard from "@/components/UserDashboard";
-import { Home, PanelLeftClose, PanelRightClose, User } from "lucide-react";
+import {
+    Home,
+    PanelLeftClose,
+    PanelRightClose,
+    UserSquare2,
+} from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -28,7 +33,7 @@ const DashboardLayout = (props) => {
                             href="/"
                             className="flex gap-4 font-bold py-3 px-3 bg-slate-400"
                         >
-                            <User size={24} /> Profile
+                            <UserSquare2 size={24} /> Profile
                         </Link>
                     </div>
                 </div>

@@ -20,14 +20,3 @@ export async function CheckCookieAuth(req) {
         });
     }
 }
-
-export async function AfterLogin(req) {
-    try {
-        let token = req.cookies.get("token");
-        if (token) {
-            return NextResponse.redirect(new URL("/", req.url));
-        }
-    } catch (e) {
-        return NextResponse.redirect(new URL("/user/login", req.url));
-    }
-}

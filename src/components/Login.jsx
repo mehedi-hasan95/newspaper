@@ -1,12 +1,19 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Login = () => {
+const Login = (props) => {
     const router = useRouter();
     const [loginFail, setLoginFail] = useState("");
     const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        if (props.firstName === "0") {
+            router.push("/user/login");
+        } else {
+            router.push("/");
+        }
+    }, []);
     const handleLogin = async (e) => {
         e.preventDefault();
         setLoginFail("");

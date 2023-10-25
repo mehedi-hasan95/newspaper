@@ -30,15 +30,15 @@ const DashboardLayout = (props) => {
                             <Home size={24} /> Home
                         </Link>
                         <Link
-                            href="/"
+                            href=""
                             className="flex gap-4 font-bold py-3 px-3 bg-slate-400"
                         >
                             <UserSquare2 size={24} /> Profile
                         </Link>
                     </div>
                 </div>
-                <div className={`${isOpen ? "w-3/4" : "w-full"} px-3`}>
-                    <div className="flex justify-between pt-3 relative">
+                <div className={`${isOpen ? "w-3/4" : "w-full"}`}>
+                    <div className="flex justify-between bg-slate-200 pt-3 relative border-b-2 border-gray-400 pb-2 px-3">
                         <button onClick={open}>
                             {isOpen ? (
                                 <PanelLeftClose size={32} />

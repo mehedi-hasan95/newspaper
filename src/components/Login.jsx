@@ -13,7 +13,7 @@ const Login = (props) => {
         } else {
             router.push("/");
         }
-    }, []);
+    }, [props.firstName, router]);
     const handleLogin = async (e) => {
         e.preventDefault();
         setLoginFail("");

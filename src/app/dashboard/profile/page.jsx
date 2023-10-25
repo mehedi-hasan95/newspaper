@@ -1,7 +1,8 @@
+import ProfileForm from "@/components/ProfileForm";
 const ProfilePage = () => {
     return (
         <div className="">
-            <h2>This is Profile</h2>
+            <ProfileForm />
         </div>
     );
 };

@@ -21,3 +21,12 @@ export async function CheckCookieAuth(req) {
         });
     }
 }
+// Which page user can't visit without login
+export async function AfterLogin(req) {
+    const cookieData = req.cookies.get("token");
+    console.log(cookieData);
+    if (!cookieData) {
+        return NextResponse.redirect(new URL("/", req.url));
+    }
+    return NextResponse.next();
+}

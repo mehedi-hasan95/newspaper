@@ -9,7 +9,7 @@ import {
 import Link from "next/link";
 import { useState } from "react";
 
-const DashboardLayout = ({ children }) => {
+const DashboardLayout = (props) => {
     const [isOpen, setIsOpen] = useState(true);
     const open = () => {
         setIsOpen(!isOpen);
@@ -47,10 +47,14 @@ const DashboardLayout = ({ children }) => {
                             )}
                         </button>
                         <div className="justify-end">
-                            <UserDashboard />
+                            {props.firstName === "0" ? (
+                                <Link href="/user/login">Log In</Link>
+                            ) : (
+                                <UserDashboard />
+                            )}
                         </div>
                     </div>
-                    {children}
+                    {props.children}
                 </div>
             </div>
         </div>

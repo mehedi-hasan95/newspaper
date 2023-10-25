@@ -2,9 +2,7 @@ import { headers } from "next/headers";
 import UserDashboard from "./UserDashboard";
 import Link from "next/link";
 import { Search } from "lucide-react";
-const NavMenu = () => {
-    const headersList = headers();
-    const firstName = headersList.get("firstName");
+const NavMenu = (props) => {
     return (
         <header className="p-4 dark:bg-gray-800 dark:text-gray-100">
             <div className="container flex justify-between h-16 mx-auto">
@@ -72,7 +70,7 @@ const NavMenu = () => {
                         </div>
                     </div>
                     <div className="pt-3">
-                        {firstName === "0" ? (
+                        {props.firstName === "0" ? (
                             <Link
                                 href="/user/login"
                                 className="hidden cursor-pointer px-6 py-2 font-semibold rounded lg:block dark:bg-violet-400 dark:text-gray-900"

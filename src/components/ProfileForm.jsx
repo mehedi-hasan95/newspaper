@@ -1,4 +1,5 @@
-const ProfileForm = () => {
+const ProfileForm = (props) => {
+    console.log(props.data);
     return (
         <div className="grid items-center h-[80vh] mx-4">
             <div className="bg-white px-5 py-5">
@@ -12,6 +13,7 @@ const ProfileForm = () => {
                                 name="fname"
                                 id="fname"
                                 className="border-2 border-black outline-none px-3 py-2 w-full rounded-md"
+                                defaultValue={props.data.firstName}
                             />
                         </div>
                         <div className="flex flex-col gap-2">
@@ -21,6 +23,7 @@ const ProfileForm = () => {
                                 name="lname"
                                 id="lname"
                                 className="border-2 border-black outline-none px-3 py-2 w-full rounded-md"
+                                defaultValue={props.data.lastName}
                             />
                         </div>
                         <div className="flex flex-col gap-2">
@@ -30,6 +33,7 @@ const ProfileForm = () => {
                                 name="mobile"
                                 id="mobile"
                                 className="border-2 border-black outline-none px-3 py-2 w-full rounded-md"
+                                defaultValue={props.data.mobile}
                             />
                         </div>
                         <div className="flex flex-col gap-2">
@@ -39,6 +43,7 @@ const ProfileForm = () => {
                                 name="email"
                                 id="email"
                                 className="border-2 border-black outline-none px-3 py-2 w-full rounded-md"
+                                defaultValue={props.data.email}
                             />
                         </div>
                         <div className="flex flex-col gap-2">
@@ -48,6 +53,7 @@ const ProfileForm = () => {
                                 name="password"
                                 id="password"
                                 className="border-2 border-black outline-none px-3 py-2 w-full rounded-md"
+                                defaultValue={props.data.password}
                             />
                         </div>
                     </div>
